@@ -1,4 +1,3 @@
-<script>
 $(document).ready(function(){
     url = "https://api.joyroadtires.ca"
     load_json_data();
@@ -225,4 +224,3 @@ $(document).ready(function(){
 
     });
 })();
-</script>
