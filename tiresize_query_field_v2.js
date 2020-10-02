@@ -219,3 +219,14 @@ $(document).ready(function(){
         });
     });
 })();
+    (function clickMe() {
+        const button = document.getElementById("search-tire");
+        button.addEventListener("click", event => {
+            var width_V = $("#width :selected").text()
+            var aspectratio_V = $("#aspectratio :selected").text()
+            var diameter_V = $("#diameter :selected").text()
+            let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + width_V +"-a" + aspectratio_V+"-r" + diameter_V
+            location.href = url;
+        });
+    })();
+
