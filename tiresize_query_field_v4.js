@@ -32,9 +32,8 @@ $(document).ready(function(){
                 html_code += '<option value="' + key + '">' + value["Width"] + '</option>';
             });
             $('#width').html(html_code);
-            $('#ratio').html('<option value="">Select Aspect Ratio</option>');
+            $('#aspectratio').html('<option value="">Select Aspect Ratio</option>');
             $('#diameter').html('<option value="">Select Diameter</option>');
-            $('#tiresize_1').html('<option value="">Select Tire Option</option>');
         });
     }
 
