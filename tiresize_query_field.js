@@ -212,7 +212,7 @@ $(document).ready(function(){
         $.getJSON(link, function (data, status) {
             if (status == "success") {
                 $.each(data, function (key, value) {
-                    let url = "https://tire-store.webflow.io/diameter-collection/" + value["width"] +"-" + value["aspectratio"]+"r" + value["diameter"]
+                    let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + value["width"] +"-a" + value["aspectratio"]+"-r" + value["diameter"]
                     location.href = url;
                     document.getElementById("search-vehicle").onclick = function () {
                         location.href = url;
