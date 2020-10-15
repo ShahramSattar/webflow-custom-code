@@ -21,7 +21,6 @@ $(document).ready(function(){
             const model = urlParams.get('model')
             const trim = urlParams.get('trim')
             const tiresize = urlParams.get('tiresize')
-            $('#year').html('<option value="">'+ year + '</option>');
             $('#make').html('<option value="">' + make + '</option>');
             $('#model').html('<option value="">' + model + '</option>');
             $('#trim').html('<option value="">'+ trim + '</option>');
