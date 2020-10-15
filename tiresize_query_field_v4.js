@@ -211,7 +211,7 @@ $(document).ready(function(){
         $.getJSON(link, function (data, status) {
             if (status == "success") {
                 $.each(data, function (key, value) {
-                    let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + value["width"] +"-a" + value["aspectratio"]+"-r" + value["diameter"]
+                    let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + value["width"] +"-a" + value["aspectratio"]+"-r" + value["diameter"]+"?year=" + year_name + "make=" + make_name + "model=" + model_name + "trim=" + trim_name + "tiresize=" +selected_size
                     location.href = url;
                 });
             }
