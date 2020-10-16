@@ -73,22 +73,28 @@ $(document).ready(function(){
                 query_select_ymmt('tiresize',tiresize, year,make,model,trim);
             });
     }
-    function load_json_data_wrd() {
-        let html_code = '';
-        //let nameCapitalized = id.charAt(0).toUpperCase() + id.slice(1)
-        html_code += '<option value="">Select Width</option>';
-        //html_code += '<option value="">Select Make</option>';
-        // html_code += '<option value="">Select Model</option>';
-        // html_code += '<option value="">Select Tire Option</option>';
-        $.getJSON(url+ '/queryall_wrd', function (data) {
-            $.each(data, function (key, value) {
-                html_code += '<option value="' + key + '">' + value["Width"] + '</option>';
+        function load_json_data_wrd() {
+            let html_code = '';
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const width = urlParams.get('section_width')
+            const aspect = urlParams.get('aspect_ratio')
+            const dia = urlParams.get('diameter')
+            $.getJSON(url+ '/queryall_wrd', function (data) {
+                $.each(data, function (key, value) {
+                    if (value["Width"] == width.toString()){
+                        html_code += '<option value="' + key + '"selected="selected' +'">' + value["Width"] + '</option>';
+                    }else{
+                        html_code += '<option value=' + key + '>' + value["Width"] + '</option>';
+                    }
+                    //html_code += '<option value="' + key + '">' + value["Width"] + '</option>';
+                });
+                $('#width').html(html_code);
+                query_select_war('aspectratio',aspect, width);
+                query_select_war('diameter',dia, width,aspect);
+
             });
-            $('#width').html(html_code);
-            $('#aspectratio').html('<option value="">Select Aspect Ratio</option>');
-            $('#diameter').html('<option value="">Select Diameter</option>');
-        });
-    }
+        }
 
     function load_json_data1(id, year_name, make_name, model_name, trim_name, selected_size) {
         let html_code = '';
@@ -154,30 +160,60 @@ $(document).ready(function(){
                 }
             });
         }
-    function load_json_data_wrd_find(id, year_name, make_name, model_name, trim_name, selected_size) {
-        let html_code = '';
-        let link =''
-        let nameCapitalized = ''
-        if(id == "aspectratio"){
-            nameCapitalized = "Aspect Ratio"
-        }else{
-            nameCapitalized = id.charAt(0).toUpperCase() + id.slice(1)
-        }
-        html_code += '<option value="">Select '+nameCapitalized+'</option>';
-        if (id == "aspectratio") {
-            link = url + '/query_ymmt/aspectratio/?' + 'width=' + year_name
-        }else if (id == "diameter") {
-            link = url + '/query_ymmt/diameter/?' + 'width=' + year_name + '&aspectratio=' + make_name
-        }
-        $.getJSON(link, function (data, status) {
-            if (status == "success") {
-                $.each(data, function (key, value) {
-                    html_code += '<option value="' + key + '">' + value[id] + '</option>';
-                });
-                $('#' + id).html(html_code);
+        function load_json_data_wrd_find(id, section_width, aspect_ratio) {
+            let html_code = '';
+            let link =''
+            let nameCapitalized = ''
+            if(id == "aspectratio"){
+                nameCapitalized = "Aspect Ratio"
+            }else{
+                nameCapitalized = id.charAt(0).toUpperCase() + id.slice(1)
             }
-        });
-    }
+            html_code += '<option value="">Select '+nameCapitalized+'</option>';
+            if (id == "aspectratio") {
+                link = url + '/query_ymmt/aspectratio/?' + 'width=' + section_width
+            }else if (id == "diameter") {
+                link = url + '/query_ymmt/diameter/?' + 'width=' + section_width + '&aspectratio=' + aspect_ratio
+            }
+            $.getJSON(link, function (data, status) {
+                if (status == "success") {
+                    $.each(data, function (key, value) {
+                        html_code += '<option value="' + key + '">' + value[id] + '</option>';
+                    });
+                    $('#' + id).html(html_code);
+                }
+            });
+        }
+        function query_select_war(id, svalue, section_width, aspect_ratio) {
+            let html_code = '';
+            let link =''
+            let nameCapitalized = ''
+            if(id == "aspectratio"){
+                nameCapitalized = "Aspect Ratio"
+            }else{
+                nameCapitalized = id.charAt(0).toUpperCase() + id.slice(1)
+            }
+            html_code += '<option value="">Select '+nameCapitalized+'</option>';
+            if (id == "aspectratio") {
+                link = url + '/query_ymmt/aspectratio/?' + 'width=' + section_width
+            }else if (id == "diameter") {
+                link = url + '/query_ymmt/diameter/?' + 'width=' + section_width + '&aspectratio=' + aspect_ratio
+            }
+            $.getJSON(link, function (data, status) {
+                if (status == "success") {
+                    $.each(data, function (key, value) {
+                        if (value[id] == svalue.toString()){
+                            html_code += '<option value="' + key + '"selected="selected' +'">' + value[id] + '</option>';
+                        }else{
+                            html_code += '<option value=' + key + '>' + value[id] + '</option>';
+                        }
+
+                        //html_code += '<option value="' + key + '">' + value[id] + '</option>';
+                    });
+                    $('#' + id).html(html_code);
+                }
+            });
+        }
 
     $(document).on('change', '#year', function(){
         var year_id = $(this).val();
