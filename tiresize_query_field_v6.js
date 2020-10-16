@@ -205,14 +205,15 @@ $(document).ready(function(){
         var make_name = $("#make :selected").text()
         var model_name = $("#model :selected").text()
         var trim_name = $("#trim :selected").text()
-        let selected_size = $("#tiresize :selected").text()
+        var selected_size = $("#tiresize :selected").text()
         //url = "https://api.joyroadtires.ca"
         link = 'https://api.joyroadtires.ca' + '/query_ymmt/width, aspectratio, diameter/?' + 'year=' + year_name + '&make=' + make_name + '&model=' + model_name + '&trim=' + trim_name + '&TireSize=' + selected_size
         $.getJSON(link, function (data, status) {
             if (status == "success") {
                 $.each(data, function (key, value) {
-                    let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + value["width"] +"-a" + value["aspectratio"]+"-r" + value["diameter"]+"?year=" + year_name + "&make=" + make_name + "&model=" + model_name + "&trim=" + trim_name + "&tiresize=" +selected_size
-                });
+                let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + value["width"] +"-a" + value["aspectratio"]+"-r" + value["diameter"]+"?year=" + year_name + "&make=" + make_name + "&model=" + model_name + "&trim=" + trim_name + "&tiresize=" +selected_size
+                location.href = url;
+             });
             }
         });
     });
