@@ -1,10 +1,14 @@
 $(document).ready(function(){
     url = "https://api.joyroadtires.ca"
-    load_json_data()
-    load_json_data_wrd()
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const qr = urlParams.get('qr')
+        if(qr=="vh"){
+            load_json_data();
+        }else if (qr=="tr"){
+            load_json_data_wrd();
+        }
     function load_json_data() {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
             const year = urlParams.get('year')
             const make = urlParams.get('make')
             const model = urlParams.get('model')
