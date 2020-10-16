@@ -9,6 +9,9 @@ $(document).ready(function(){
         }else if (qr=="tr"){
             load_json_data_wrd();
             load_Fdata_ymmt();
+        }else{
+            load_Fdata_wrd();
+            load_Fdata_ymmt();
         }
         function load_Fdata_ymmt() {
             let html_code = '';
