@@ -224,7 +224,7 @@ $(document).ready(function(){
             var width_V = $("#width :selected").text()
             var aspectratio_V = $("#aspectratio :selected").text()
             var diameter_V = $("#diameter :selected").text()
-            let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + width_V +"-a" + aspectratio_V+"-r" + diameter_V+"?qr=tr&section_width=" + width + "&aspect_ratio=" + aspect + "&diameter=" + dia
+            let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + width_V +"-a" + aspectratio_V+"-r" + diameter_V+"?qr=tr&section_width=" + width_V + "&aspect_ratio=" + aspectratio_V + "&diameter=" + diameter_V
             location.href = url;
         });
     })();
