@@ -5,9 +5,47 @@ $(document).ready(function(){
         const qr = urlParams.get('qr')
         if(qr=="vh"){
             load_json_data();
+            load_Fdata_wrd();
         }else if (qr=="tr"){
             load_json_data_wrd();
+            load_Fdata_ymmt();
         }
+        function load_Fdata_ymmt() {
+            let html_code = '';
+            //let nameCapitalized = id.charAt(0).toUpperCase() + id.slice(1)
+            html_code += '<option value="">Select Year</option>';
+            //html_code += '<option value="">Select Make</option>';
+           // html_code += '<option value="">Select Model</option>';
+           // html_code += '<option value="">Select Tire Option</option>';
+            $.getJSON(url+ '/queryall_ymmt', function (data) {
+                $.each(data, function (key, value) {
+                    html_code += '<option value=' + key + '>' + value["Year"] + '</option>';
+                });
+                $('#year').html(html_code);
+                $('#make').html('<option value="">Select Make</option>');
+                $('#model').html('<option value="">Select Model</option>');
+                $('#trim').html('<option value="">Select Trim</option>');
+                $('#tiresize').html('<option value="">Select Tire Option</option>');
+            });
+        }
+        function load_Fdata_wrd() {
+            let html_code = '';
+            //let nameCapitalized = id.charAt(0).toUpperCase() + id.slice(1)
+            html_code += '<option value="">Select Width</option>';
+            //html_code += '<option value="">Select Make</option>';
+            // html_code += '<option value="">Select Model</option>';
+            // html_code += '<option value="">Select Tire Option</option>';
+            $.getJSON(url+ '/queryall_wrd', function (data) {
+                $.each(data, function (key, value) {
+                    html_code += '<option value="' + key + '">' + value["Width"] + '</option>';
+                });
+                $('#width').html(html_code);
+                $('#aspectratio').html('<option value="">Select Aspect Ratio</option>');
+                $('#diameter').html('<option value="">Select Diameter</option>');
+                $('#tiresize_1').html('<option value="">Select Tire Option</option>');
+            });
+        }
+
     function load_json_data() {
             const year = urlParams.get('year')
             const make = urlParams.get('make')
