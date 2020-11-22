@@ -212,6 +212,12 @@ $(document).ready(function(){
             if (status == "success") {
                 $.each(data, function (key, value) {
                 let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + value["width"] +"-a" + value["aspectratio"]+"-r" + value["diameter"]+"?qr=vh&year=" + year_name + "&make=" + make_name + "&model=" + model_name + "&trim=" + trim_name + "&tiresize=" +selected_size + "#item-section"
+                    let url2 = "https://api.joyroadtires.ca/v1/add/search?"+"width="+ value["width"]+"&ratio="+value["aspectratio"]+"&dia="+value["diameter"]
+                    let url3 = "https://api.joyroadtires.ca/v2/add/search?"+"width="+ value["width"]+"&ratio="+value["aspectratio"]+"&dia="+value["diameter"]
+                    $.getJSON(url2, function (data) {
+                    });
+                    $.getJSON(url3, function (data) {
+                    });
                 location.href = url;
              });
             }
@@ -225,6 +231,13 @@ $(document).ready(function(){
             var aspectratio_V = $("#aspectratio :selected").text()
             var diameter_V = $("#diameter :selected").text()
             let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + width_V +"-a" + aspectratio_V+"-r" + diameter_V+"?qr=tr&section_width=" + width_V + "&aspect_ratio=" + aspectratio_V + "&diameter=" + diameter_V + "#item-section"
+        let url2 = "https://www.joyroadtires.ca/v1/add/search?"+"width="+ width+"&ratio="+aspect+"&dia="+dia
+        let url3 = "https://www.joyroadtires.ca/v2/add/search?"+"width="+ width+"&ratio="+aspect+"&dia="+dia
+        $.getJSON(url2, function (data) {
+        });
+        $.getJSON(url3, function (data) {
+        });
+
             location.href = url;
         });
     })();
