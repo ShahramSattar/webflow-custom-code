@@ -231,8 +231,8 @@ $(document).ready(function(){
             var aspectratio_V = $("#aspectratio :selected").text()
             var diameter_V = $("#diameter :selected").text()
             let url = "https://www.joyroadtires.ca/tire-collection/" + "tc-w" + width_V +"-a" + aspectratio_V+"-r" + diameter_V+"?qr=tr&section_width=" + width_V + "&aspect_ratio=" + aspectratio_V + "&diameter=" + diameter_V + "#item-section"
-        let url2 = "https://www.joyroadtires.ca/v1/add/search?"+"width="+ width_V+"&ratio="+aspectratio_V+"&dia="+diameter_V
-        let url3 = "https://www.joyroadtires.ca/v2/add/search?"+"width="+ width_V+"&ratio="+aspectratio_V+"&dia="+diameter_V
+        let url2 = "https://api.joyroadtires.ca/v1/add/search?"+"width="+ width_V+"&ratio="+aspectratio_V+"&dia="+diameter_V
+        let url3 = "https://api.joyroadtires.ca/v2/add/search?"+"width="+ width_V+"&ratio="+aspectratio_V+"&dia="+diameter_V
         $.getJSON(url2, function (data) {
         });
         $.getJSON(url3, function (data) {
