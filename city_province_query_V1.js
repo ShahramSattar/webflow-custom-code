@@ -1,6 +1,5 @@
     $(document).ready(function(){
-        //url = "https://api.joyroadtires.ca"
-        url = "http://localhost:3000"
+        url = "https://api.joyroadtires.ca"
         load_json_data();
         function load_json_data() {
             let html_code = '';
