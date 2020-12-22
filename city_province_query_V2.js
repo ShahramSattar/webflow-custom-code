@@ -6,7 +6,7 @@
             html_code += '<option value="">Select Your Province</option>';
             $.getJSON(url+ '/queryall_prov', function (data) {
                 $.each(data, function (key, value) {
-                    html_code += '<option value=' + key + '>' + value["Province_Territory"] + '</option>';
+                    html_code += '<option value="' + value["Province_Territory"] + '">' + value["Province_Territory"] + '</option>';
                 });
                 $('#province').html(html_code);
                 $('#city').html('<option value="">Select Your City</option>');
@@ -35,7 +35,7 @@
             $.getJSON(link, function (data, status) {
                 if (status == "success") {
                     $.each(data, function (key, value) {
-                        html_code += '<option value="' + key + '">' + value[id] + '</option>';
+                        html_code += '<option value="' + value[id] + '">' + value[id] + '</option>';
                     });
                     $('#' + id).html(html_code);
                 }
