@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    url = "https://api.joyroadtires.ca"
+    url = "https://api-tire.v-dim.com"
+    //url = "https://api.joyroadtires.ca"
     load_json_data();
     load_json_data_wrd();
     function load_json_data() {
@@ -207,7 +208,7 @@ $(document).ready(function(){
         var trim_name = $("#trim :selected").text()
         var selected_size = $("#tiresize :selected").text()
         //url = "https://api.joyroadtires.ca"
-        link = 'https://api.joyroadtires.ca' + '/query_ymmt/width, aspectratio, diameter/?' + 'year=' + year_name + '&make=' + make_name + '&model=' + model_name + '&trim=' + trim_name + '&TireSize=' + selected_size
+        link = 'https://api-tire.v-dim.com' + '/query_ymmt/width, aspectratio, diameter/?' + 'year=' + year_name + '&make=' + make_name + '&model=' + model_name + '&trim=' + trim_name + '&TireSize=' + selected_size
         $.getJSON(link, function (data, status) {
             if (status == "success") {
                 $.each(data, function (key, value) {
