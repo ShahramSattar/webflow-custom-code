@@ -1,12 +1,12 @@
     $(document).ready(function(){
-        url = "https://api.joyroadtires.ca"
+        url = "https://api-tire.v-dim.com"
         load_json_data();
         function load_json_data() {
             let html_code = '';
             html_code += '<option value="">Select Your Province</option>';
             $.getJSON(url+ '/queryall_prov', function (data) {
                 $.each(data, function (key, value) {
-                    html_code += '<option value="' + value["Province_Territory"] + '">' + value["Province_Territory"] + '</option>';
+                    html_code += '<option value="' + value["Province"] + '">' + value["Province"] + '</option>';
                 });
                 $('#province').html(html_code);
                 $('#city').html('<option value="">Select Your City</option>');
@@ -31,7 +31,7 @@
             let html_code = '';
             let link =''
             html_code += '<option value="">Select Your City</option>';
-            link = url + '/query_city/city/?' + 'province_territory=' + province_name
+            link = url + '/query_city/city/?' + 'province=' + province_name
             $.getJSON(link, function (data, status) {
                 if (status == "success") {
                     $.each(data, function (key, value) {
